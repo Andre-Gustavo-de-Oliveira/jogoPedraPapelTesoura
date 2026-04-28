@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("jogoPedraPapelTesoura.ConsoleApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+64e8e2084014026b896730614cd602d724486a3f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d49dd4035d2e6fea9061f38c6826f58ab3d5b028")]
 [assembly: System.Reflection.AssemblyProductAttribute("jogoPedraPapelTesoura.ConsoleApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("jogoPedraPapelTesoura.ConsoleApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
