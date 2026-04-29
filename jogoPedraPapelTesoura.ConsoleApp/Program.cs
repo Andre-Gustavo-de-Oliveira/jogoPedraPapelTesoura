@@ -1,77 +1,117 @@
-﻿using System;
+﻿using System.Security.Cryptography;
 
 class Program
 {
     static void Main()
     {
-        bool continuar = true;
+        while (true)
+        {
+            int escolhaJogador = ObterEscolhaJogador();
 
-        while (continuar)
+            int escolhaComputador = ObterEscolhaComputador();
+
+            CompararEscolhas(escolhaJogador, escolhaComputador);
+
+            Console.Write("Deseja continuar? (s/N): ");
+            string? opcaoContinuar = Console.ReadLine()?.ToUpper();
+
+            if (opcaoContinuar != "S")
+                break;
+        }
+    }
+
+    static int ObterEscolhaJogador()
+    {
+        int escolhaJogador;
+
+        do // vai executar pelo menos uma vez
         {
             Console.Clear();
-            Console.WriteLine("=== Pedra, Papel e Tesoura ===");
-            Console.WriteLine("Escolha uma opção:");
+            Console.WriteLine("-----------------------------");
+            Console.WriteLine("Pedra, Papel, Tesoura");
+            Console.WriteLine("-----------------------------");
             Console.WriteLine("1 - Pedra");
             Console.WriteLine("2 - Papel");
             Console.WriteLine("3 - Tesoura");
+            Console.WriteLine("-----------------------------");
 
-            Console.Write("Sua escolha: ");
-            string entrada = Console.ReadLine();
+            Console.Write("Digite uma opção válida: ");
+            string? strEscolhaJogador = Console.ReadLine();
 
-            if (!int.TryParse(entrada, out int escolhaJogador) || escolhaJogador < 1 || escolhaJogador > 3)
+            Console.WriteLine("-----------------------------");
+
+            if (strEscolhaJogador == "1" || strEscolhaJogador == "2" || strEscolhaJogador == "3")
             {
-                Console.WriteLine("Entrada inválida!");
-                Console.ReadKey();
-                continue;
+                escolhaJogador = Convert.ToInt32(strEscolhaJogador);
+                break;
             }
 
-            // Jogada do computador
-            Random random = new Random();
-            int escolhaComputador = random.Next(1, 4);
+        } while (true);
 
-            string jogadaJogador = ConverterJogada(escolhaJogador);
-            string jogadaComputador = ConverterJogada(escolhaComputador);
-
-            // Resultado
-            string resultado = DeterminarVencedor(escolhaJogador, escolhaComputador);
-
-            // Exibir resultado
-            Console.WriteLine($"\nVocê escolheu: {jogadaJogador}");
-            Console.WriteLine($"Computador escolheu: {jogadaComputador}");
-            Console.WriteLine($"Resultado: {resultado}");
-
-            // Jogar novamente
-            Console.WriteLine("\nDeseja jogar novamente? (s/n)");
-            string resposta = Console.ReadLine().ToLower();
-
-            if (resposta != "s")
-                continuar = false;
-        }
+        return escolhaJogador;
     }
 
-    static string ConverterJogada(int escolha)
+    static int ObterEscolhaComputador()
     {
-        switch (escolha)
+        return RandomNumberGenerator.GetInt32(1, 4);
+    }
+
+    static void CompararEscolhas(int escolhaJogador, int escolhaComputador)
+    {
+        const int ESCOLHA_PEDRA = 1;
+        const int ESCOLHA_PAPEL = 2;
+        const int ESCOLHA_TESOURA = 3;
+
+        if (escolhaJogador == escolhaComputador)
         {
-            case 1: return "Pedra";
-            case 2: return "Papel";
-            case 3: return "Tesoura";
-            default: return "";
+            Console.WriteLine("Empate!");
         }
-    }
+        else if (escolhaJogador == ESCOLHA_PEDRA)
+        {
+            Console.Write("Pedra vs ");
 
-    static string DeterminarVencedor(int jogador, int computador)
-    {
-        if (jogador == computador)
-            return "Empate!";
+            if (escolhaComputador == ESCOLHA_PAPEL)
+            {
+                Console.WriteLine("Papel");
+                Console.WriteLine("O computador venceu.");
+            }
+            else if (escolhaComputador == ESCOLHA_TESOURA)
+            {
+                Console.WriteLine("Tesoura");
+                Console.WriteLine("Você venceu.");
+            }
+        }
+        else if (escolhaJogador == ESCOLHA_PAPEL)
+        {
+            Console.Write("Papel vs ");
 
-        if (
-            (jogador == 1 && computador == 3) ||
-            (jogador == 2 && computador == 1) ||
-            (jogador == 3 && computador == 2)
-        )
-            return "Você venceu!";
+            if (escolhaComputador == ESCOLHA_TESOURA)
+            {
+                Console.WriteLine("Tesoura");
+                Console.WriteLine("O computador venceu.");
+            }
+            else if (escolhaComputador == ESCOLHA_PEDRA)
+            {
+                Console.WriteLine("Pedra");
+                Console.WriteLine("Você venceu.");
+            }
+        }
+        else if (escolhaJogador == ESCOLHA_TESOURA)
+        {
+            Console.Write("Tesoura vs ");
 
-        return "Computador venceu!";
+            if (escolhaComputador == ESCOLHA_PEDRA)
+            {
+                Console.WriteLine("Pedra");
+                Console.WriteLine("O computador venceu.");
+            }
+            else if (escolhaComputador == ESCOLHA_PAPEL)
+            {
+                Console.WriteLine("Papel");
+                Console.WriteLine("Você venceu.");
+            }
+        }
+
+        Console.WriteLine("-----------------------------");
     }
 }

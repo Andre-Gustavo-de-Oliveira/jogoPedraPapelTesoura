@@ -12,3 +12,4 @@ D:\Programming\Academia do Programador\jogoPedraPapelTesoura\jogoPedraPapelTesou
 D:\Programming\Academia do Programador\jogoPedraPapelTesoura\jogoPedraPapelTesoura.ConsoleApp\obj\Debug\net10.0\jogoPedraPapelTesoura.ConsoleApp.pdb
 D:\Programming\Academia do Programador\jogoPedraPapelTesoura\jogoPedraPapelTesoura.ConsoleApp\obj\Debug\net10.0\jogoPedraPapelTesoura.ConsoleApp.genruntimeconfig.cache
 D:\Programming\Academia do Programador\jogoPedraPapelTesoura\jogoPedraPapelTesoura.ConsoleApp\obj\Debug\net10.0\ref\jogoPedraPapelTesoura.ConsoleApp.dll
+D:\Programming\Academia do Programador\jogoPedraPapelTesoura\jogoPedraPapelTesoura.ConsoleApp\obj\Debug\net10.0\jogoPedraPapelTesoura.ConsoleApp.sourcelink.json
